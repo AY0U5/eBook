@@ -1,0 +1,41 @@
+
+// hero
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0 0;
+}
+
+.hero{
+  display: flex;
+  justify-content: center;
+}
+
+.hero img{
+  object-fit: cover;
+  width: 93vw;
+  height: 80vh;
+  border-radius: 10px;
+}
+
+.hero-title{
+  position: absolute;
+  margin-top: 3rem;
+  font-size: 70px;
+}
+
+.hero-button{
+  position: absolute;
+  bottom: 10rem;
+  padding: 1.3rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hero-button:hover{
+  background-color: #e3e3e3;
+}

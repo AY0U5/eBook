@@ -1,0 +1,42 @@
+services:
+  postgres:
+    container_name: postgres-sql-ebook
+    image: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: ebook
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - spring-demo
+    restart: unless-stopped
+#  ebook-api:
+#    container_name: ebook-api
+#    image: ebook/ebook:1.0.0
+#    ports:
+#      - 8080:8080
+#    networks:
+#      - spring-demo
+#    depends_on:
+#      - postgres
+#  ebook-ui:
+#    container_name: ebook-ui
+#    image: ebook/ebook-ui:1.0.0
+#    ports:
+#      - 8080:80
+#    networks:
+#      - spring-demo
+#    depends_on:
+#      - ebook-api
+
+networks:
+  spring-demo:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local

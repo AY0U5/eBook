@@ -1,0 +1,31 @@
+.category{
+  padding: 5rem 3rem 5rem;
+}
+
+.category-heading{
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-heading h4{
+  font-size: 40px;
+}
+
+.category-list{
+  display: flex;
+}
+
+.category-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1.6rem;
+}
+
+.category-img img{
+  background: #e1e1e1;
+  border-radius: 70px;
+  width: 7rem;
+  height: 7rem;
+  margin: 1rem 0;
+}
