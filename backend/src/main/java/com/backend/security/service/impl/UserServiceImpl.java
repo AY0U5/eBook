@@ -57,9 +57,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         List<Role> roles = new ArrayList<>();
-        if (user.getRoles() != null) {
-            roles.add(user.getRoles().get(0));
-        }
         Role roleUser = roleService.findByName("ROLE_USER");
         if (roleUser == null) {
             throw new IllegalStateException("Role USER was not initialized");

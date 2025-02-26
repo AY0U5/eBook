@@ -5,6 +5,14 @@
   </div>
   <div class="from">
     <div class="form-item">
+      <label for="firstname">Firstname</label>
+      <input id="firstname" type="text" placeholder="Firstname" [(ngModel)]="item.firstName"/>
+    </div>
+    <div class="form-item">
+      <label for="lastname">Lastname</label>
+      <input id="lastname" type="text" placeholder="lastname" [(ngModel)]="item.lastName"/>
+    </div>
+    <div class="form-item">
       <label for="email">Email</label>
       <input id="email" type="text" placeholder="example@gmail.com" [(ngModel)]="item.username"/>
     </div>
@@ -14,7 +22,7 @@
     </div>
     <div class="buttons">
       <div class="log-btn">
-        <button (click)="login()">Log In</button>
+        <button (click)="register()">Log In</button>
       </div>
       <div class="google-btn">
         <img src="assets/image/google.webp">
@@ -22,7 +30,7 @@
       </div>
     </div>
     <div class="sign-Up">
-      <p>I don't have an account!<span (click)="routeToSignUp()">Sing Up</span></p>
+      <p>I already have an account!<span (click)="routeToSignIn()">Sing In</span></p>
     </div>
   </div>
 </div>

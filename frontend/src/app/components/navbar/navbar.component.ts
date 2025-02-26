@@ -15,4 +15,8 @@ export class NavbarComponent {
   navigateToLoginPage() {
     this.router.navigate(['sign-in'])
   }
+
+  navigateToHome() {
+    this.router.navigate([''])
+  }
 }

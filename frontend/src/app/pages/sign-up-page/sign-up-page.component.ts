@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../shared/service/user.service";
-import {UserDto} from "../../shared/models/user-dto";
 import {ToastrService} from "ngx-toastr";
+import {UserDto} from "../../shared/models/user-dto";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  selector: 'app-sign-up-page',
+  templateUrl: './sign-up-page.component.html',
+  styleUrl: './sign-up-page.component.scss'
 })
-export class LoginPageComponent {
+export class SignUpPageComponent {
 
   constructor(
     private service: UserService,
     private toast: ToastrService,
-    private router: Router
+    private router : Router
   ) {
   }
 
@@ -36,22 +36,8 @@ export class LoginPageComponent {
     });
   }
 
-  public login(){
-    this.service.login().subscribe({
-      next: (result) => {
-        this.toast.success("User logged in successfully", "Success",{
-          timeOut: 3000,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right',
-          closeButton: true,
-        });
-      },
-      error: (error) => {
-        console.log(error);
-        this.toast.error("User login failed", "Error");
-      }
-    });
+  routeToSignIn() {
+    this.router.navigate(['sign-in'])
   }
 
   get item(): UserDto {
@@ -68,9 +54,5 @@ export class LoginPageComponent {
 
   set items(value: Array<UserDto>) {
     this.service.items = value;
-  }
-
-  routeToSignUp() {
-    this.router.navigate(['sign-up'])
   }
 }
