@@ -12,13 +12,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "_user")
-//@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "user_seq",sequenceName = "user_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "user_seq")
-    private Long id;
+    protected Long id;
     private String firstName;
     private String lastName;
     @Size(min = 6, message = "Password should have 6 character minimum")
@@ -33,6 +33,8 @@ public class User implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
+    public User() {
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
