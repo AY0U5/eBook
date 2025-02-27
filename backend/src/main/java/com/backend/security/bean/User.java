@@ -21,6 +21,8 @@ public class User implements UserDetails {
     protected Long id;
     private String firstName;
     private String lastName;
+    private String provider;
+    private String providerId;
     @Size(min = 6, message = "Password should have 6 character minimum")
     private String password;
     @Column(unique = true)
@@ -127,5 +129,21 @@ public class User implements UserDetails {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }

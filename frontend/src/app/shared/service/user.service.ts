@@ -12,6 +12,7 @@ export class UserService {
 
   private _item : UserDto = new UserDto();
   private _items : Array<UserDto> = new Array<UserDto>;
+  private _request = {email: "", password: ""};
 
   constructor(
     private http: HttpClient
@@ -22,7 +23,7 @@ export class UserService {
   }
 
   public login():Observable<TokenDto>{
-    return this.http.post<TokenDto>(this.API + "authenticate", this.item);
+    return this.http.post<TokenDto>(this.API + "authenticate", this._request);
   }
 
   get API(){
@@ -50,5 +51,14 @@ export class UserService {
 
   set items(value: Array<UserDto>) {
     this._items = value;
+  }
+
+
+  get request() {
+    return this._request;
+  }
+
+  set request(value: { email: string; password: string }) {
+    this._request = value;
   }
 }

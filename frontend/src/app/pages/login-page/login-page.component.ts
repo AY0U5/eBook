@@ -39,6 +39,7 @@ export class LoginPageComponent {
   public login(){
     this.service.login().subscribe({
       next: (result) => {
+        localStorage.setItem("token", result.token);
         this.toast.success("User logged in successfully", "Success",{
           timeOut: 3000,
           progressBar: true,
@@ -52,6 +53,14 @@ export class LoginPageComponent {
         this.toast.error("User login failed", "Error");
       }
     });
+  }
+
+  get request() {
+    return this.service.request;
+  }
+
+  set request(value: { email: string; password: string }) {
+    this.service.request = value;
   }
 
   get item(): UserDto {

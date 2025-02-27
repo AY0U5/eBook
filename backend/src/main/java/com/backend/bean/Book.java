@@ -17,6 +17,8 @@ public class Book {
     private BigDecimal price;
     @ManyToOne
     private Author author;
+    @ManyToOne
+    private BookCategory category;
 
     public Long getId() {
         return id;
@@ -64,5 +66,13 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public BookCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(BookCategory category) {
+        this.category = category;
     }
 }
