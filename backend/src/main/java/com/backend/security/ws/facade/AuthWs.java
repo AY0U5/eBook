@@ -45,4 +45,11 @@ public class AuthWs {
         Token authenticate = userService.authenticate(authRequest);
         return tokenConverter.toDto(authenticate);
     }
+
+    /*@GetMapping("/login-success")
+    public ResponseEntity<?> loginSuccess(OAuth2AuthenticationToken authToken) {
+        String email = authToken.getPrincipal().getAttribute("email");
+        String token = jwtService.generateToken(email);  // Custom logic
+        return ResponseEntity.ok(new AuthResponse(token));
+    }*/
 }
