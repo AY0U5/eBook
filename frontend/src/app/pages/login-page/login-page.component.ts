@@ -40,6 +40,7 @@ export class LoginPageComponent {
     this.service.login().subscribe({
       next: (result) => {
         localStorage.setItem("token", result.token);
+        this.router.navigate(['admin']);
         this.toast.success("User logged in successfully", "Success",{
           timeOut: 3000,
           progressBar: true,

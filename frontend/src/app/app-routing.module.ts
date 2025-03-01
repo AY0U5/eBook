@@ -7,7 +7,11 @@ import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 const routes: Routes = [
   {path: '',component:HomeComponent},
   {path: 'sign-in',component:LoginPageComponent},
-  {path: 'sign-up',component:SignUpPageComponent}
+  {path: 'sign-up',component:SignUpPageComponent},
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin-routing.module').then(m => m.AdminRoutingModule)
+  }
 ];
 
 @NgModule({

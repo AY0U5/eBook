@@ -13,22 +13,24 @@ import {provideToastr} from "ngx-toastr";
 import {BrowserAnimationsModule, provideAnimations} from "@angular/platform-browser/animations";
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import {FormsModule} from "@angular/forms";
+import {AdminModule} from "./pages/admin/admin.module";
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {ShareModule} from "./components/share.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent,
-    CategoryComponent,
     LoginPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ShareModule
   ],
   providers: [
     provideClientHydration(),
