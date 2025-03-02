@@ -1,0 +1,36 @@
+.dash-container {
+  display: flex;
+}
+
+.head{
+  display: flex;
+  padding: 3rem 3rem;
+  gap: 3rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  border: 2px solid #D9D9D9;
+  border-radius: 10px;
+  width: 20rem;
+  height: 10rem;
+}
+
+.card img{
+  width: 5rem;
+  height: 5rem;
+  margin: 2rem;
+}
+
+.card h3{
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: #000000;
+}
+
+.card p{
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000000;
+}
