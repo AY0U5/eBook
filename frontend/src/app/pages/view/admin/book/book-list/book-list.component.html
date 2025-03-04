@@ -2,6 +2,49 @@
   <app-sidebar/>
   <div class="bg-white rounded-lg pb-4 shadow h-[200vh]">
     <app-top-bar/>
-    book list
+    <div class="px-5">
+      <div class="flex gap-30">
+        <button class="flex items-center bg-cyan-300 px-4 py-2 rounded-sm cursor-pointer"
+          (click)="openCreate()"
+        >
+          <lucide-angular name="BookPlus" size="15px" class="mr-1"></lucide-angular>
+          New
+        </button>
+        <div class="bg-stone-200 rounded flex items-center px-4 py-2 text-sm w-200">
+          <lucide-angular name="Search" size="20px"></lucide-angular>
+          <input
+            type="text"
+            placeholder="Search"
+            class="w-full bg-transparent placeholder:text-stone-400 focus:outline-none ml-2"
+          />
+        </div>
+      </div>
+      <div class="pt-10">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+          <thead class="bg-gray-100 border-b border-gray-200">
+          <tr>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Name</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Author</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Category</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-2 text-sm text-gray-900">Candide</td>
+            <td class="px-4 py-2 text-sm text-gray-900">Voltaire</td>
+            <td class="px-4 py-2 text-sm text-gray-900">Science fiction</td>
+            <td class="px-4 py-2 text-sm space-x-2">
+              <button class="px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded hover:bg-blue-600">Edit</button>
+              <button class="px-3 py-1 text-xs font-medium text-white bg-red-500 rounded hover:bg-red-600">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+
+
+<app-book-create/>
