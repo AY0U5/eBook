@@ -5,17 +5,17 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium text-gray-700">Title</label>
-        <input type="text"
+        <input type="text" [(ngModel)]="item.title"
           class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Description</label>
-        <textarea
+        <textarea [(ngModel)]="item.description"
           class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Price</label>
-        <input type="number"
+        <input type="number" [(ngModel)]="item.price"
                class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
 

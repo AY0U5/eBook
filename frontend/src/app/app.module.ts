@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {OpenModule} from "./pages/view/open/open.module";
 import {AdminModule} from "./pages/view/admin/admin.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {AdminModule} from "./pages/view/admin/admin.module";
     AppRoutingModule,
     OpenModule,
     AdminModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

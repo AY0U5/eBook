@@ -9,6 +9,8 @@ public class UserDto {
     private Long id;
     private String firstName;
     private String lastName;
+    private String provider;
+    private String providerId;
     private String password;
     private String username;
     private List<Role> roles;
@@ -95,5 +97,21 @@ public class UserDto {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }

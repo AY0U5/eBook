@@ -22,6 +22,12 @@ export class SidebarComponent {
       selected: false
     },
     {
+      title: 'Category',
+      icon: 'Signature',
+      link: '/admin/authors',
+      selected: false
+    },
+    {
       title: 'Books',
       icon: 'LibraryBig',
       link: '/admin/books',

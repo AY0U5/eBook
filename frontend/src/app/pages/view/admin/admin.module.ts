@@ -6,6 +6,7 @@ import { BookListComponent } from './book/book-list/book-list.component';
 import {LucideAngularModule,BookPlus,Search}
   from "lucide-angular";
 import { BookCreateComponent } from './book/book-create/book-create.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -18,7 +19,8 @@ import { BookCreateComponent } from './book/book-create/book-create.component';
   imports: [
     CommonModule,
     ComponentsModule,
-    LucideAngularModule.pick({BookPlus,Search})
+    LucideAngularModule.pick({BookPlus, Search}),
+    FormsModule
   ]
 })
 export class AdminModule { }

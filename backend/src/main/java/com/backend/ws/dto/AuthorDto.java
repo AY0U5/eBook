@@ -1,28 +1,15 @@
-package com.backend.bean;
+package com.backend.ws.dto;
 
-import com.backend.security.bean.User;
-import jakarta.persistence.*;
+import com.backend.security.ws.dto.UserDto;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity
-public class Author extends User {
+public class AuthorDto extends UserDto{
 
     private String bio;
     private Date dateOfBirth;
     private String nationality;
-
-    public Author() {
-        super();
-    }
-
-    @Id
-    @SequenceGenerator(name = "author_seq",sequenceName = "author_seq",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "author_seq")
-    public Long getId() {
-        return this.id;
-    }
 
     public String getBio() {
         return bio;
