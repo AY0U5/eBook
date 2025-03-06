@@ -12,6 +12,7 @@ export class CategoryService {
   private _item : BookCategoryDto = new BookCategoryDto();
   private _items : Array<BookCategoryDto> = new Array<BookCategoryDto>();
   private _visible: boolean = false;
+  private _editVisible: boolean = false;
 
   constructor(
     private http: HttpClient
@@ -23,6 +24,14 @@ export class CategoryService {
 
   public findAll():Observable<Array<BookCategoryDto>>{
     return this.http.get<Array<BookCategoryDto>>(this.API)
+  }
+
+  public deleteByRef(ref:string):Observable<number>{
+    return this.http.delete<number>(this.API + "ref/" + ref)
+  }
+
+  public edit():Observable<BookCategoryDto>{
+    return this.http.put<BookCategoryDto>(this.API +"edit",this.item)
   }
 
   get API(){
@@ -38,6 +47,13 @@ export class CategoryService {
     this._visible = value;
   }
 
+  get editVisible(): boolean {
+    return this._editVisible;
+  }
+
+  set editVisible(value: boolean) {
+    this._editVisible = value;
+  }
 
   get item(): BookCategoryDto {
     if (this._item == null){

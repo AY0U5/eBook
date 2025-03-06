@@ -23,4 +23,6 @@ public interface BookCategoryAdminService {
     BookCategory save(BookCategory category);
 
     Page<BookCategory> findAll(Pageable pageable);
+
+    BookCategory edit(BookCategory category);
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryService} from "../../../../../shared/service/category.service";
 import {BookCategoryDto} from "../../../../../shared/models/book-category-dto";
+import {ToastService} from "../../../../../shared/service/toast.service";
 
 @Component({
   selector: 'app-category-list',
@@ -9,7 +10,10 @@ import {BookCategoryDto} from "../../../../../shared/models/book-category-dto";
 })
 export class CategoryListComponent implements OnInit{
 
-  constructor(private categoryService: CategoryService) {
+  constructor(
+    private categoryService: CategoryService,
+    private toast: ToastService
+  ) {
   }
 
   ngOnInit() {
@@ -28,12 +32,37 @@ export class CategoryListComponent implements OnInit{
     })
   }
 
+  deleteByRef(ref: string){
+    this.categoryService.deleteByRef(ref).subscribe({
+      next: (value) => {
+        this.items = this.items.filter(item => item.ref !== ref);
+        this.toast.show("Category deleted successfully")
+      },
+      error: (err) => {
+        this.toast.show("Error deleting category")
+      }
+    })
+  }
+
+  openEdit(item: BookCategoryDto){
+    this.item = item;
+    this.editVisible = true;
+  }
+
   get visible(): boolean {
     return this.categoryService.visible;
   }
 
   set visible(value: boolean) {
     this.categoryService.visible = value;
+  }
+
+  get editVisible(): boolean {
+    return this.categoryService.editVisible;
+  }
+
+  set editVisible(value: boolean) {
+    this.categoryService.editVisible = value;
   }
 
   get item(): BookCategoryDto {

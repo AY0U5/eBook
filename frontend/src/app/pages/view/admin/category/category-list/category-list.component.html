@@ -1,6 +1,6 @@
 <div class="bg-stone-100 grid gap-4 p-4 grid-cols-[250px_1fr]">
   <app-sidebar/>
-  <div class="bg-white rounded-lg pb-4 shadow h-[200vh]">
+  <div class="bg-white rounded-lg pb-4 shadow h-[96vh]">
     <app-top-bar/>
     <div class="px-5">
       <div class="flex gap-30 justify-between">
@@ -35,8 +35,12 @@
             <td class="px-4 py-2 text-sm text-gray-900">{{item.name}}</td>
             <td class="px-4 py-2 text-sm text-gray-900">{{item.description}}</td>
             <td class="flex flex-col gap-1 px-4 py-2 text-sm">
-              <button class="px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded hover:bg-blue-600">Edit</button>
-              <button class="px-3 py-1 text-xs font-medium text-white bg-red-500 rounded hover:bg-red-600">Delete</button>
+              <button class="px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded hover:bg-blue-600"
+                (click)="openEdit(item)"
+              >Edit</button>
+              <button class="px-3 py-1 text-xs font-medium text-white bg-red-500 rounded hover:bg-red-600"
+                (click)="deleteByRef(item.ref)"
+              >Delete</button>
             </td>
           </tr>
           </tbody>
@@ -46,3 +50,4 @@
   </div>
 </div>
 <app-category-create/>
+<app-category-edit/>

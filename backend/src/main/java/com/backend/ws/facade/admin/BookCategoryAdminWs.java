@@ -54,6 +54,13 @@ public class BookCategoryAdminWs {
         return converter.toDto(saved);
     }
 
+    @PutMapping("edit")
+    public BookCategoryDto edit(@RequestBody BookCategoryDto category) {
+        BookCategory entity = converter.toEntity(category);
+        BookCategory edit = bookCategoryAdminService.edit(entity);
+        return converter.toDto(edit);
+    }
+
     public Page<BookCategory> findAll(Pageable pageable) {
         return bookCategoryAdminService.findAll(pageable);
     }

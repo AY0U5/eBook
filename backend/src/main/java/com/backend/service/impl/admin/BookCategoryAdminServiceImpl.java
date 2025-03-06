@@ -61,4 +61,23 @@ public class BookCategoryAdminServiceImpl implements BookCategoryAdminService {
     public Page<BookCategory> findAll(Pageable pageable) {
         return dao.findAll(pageable);
     }
+
+    @Override
+    public BookCategory edit(BookCategory category){
+        BookCategory byRef = dao.findByRef(category.getRef());
+        if(byRef == null){
+            throw new IllegalArgumentException("Category with ref " + category.getRef() + " does not exist");
+        }
+        copy(category, byRef);
+        return dao.save(byRef);
+    }
+
+    private void copy(BookCategory source, BookCategory target){
+        if(source.getName() != null){
+            target.setName(source.getName());
+        }
+        if(source.getDescription() != null){
+            target.setDescription(source.getDescription());
+        }
+    }
 }
