@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -16,15 +16,9 @@ export class SidebarComponent {
       selected: true
     },
     {
-      title: 'Author',
-      icon: 'Signature',
-      link: '/admin/authors',
-      selected: false
-    },
-    {
       title: 'Category',
-      icon: 'Signature',
-      link: '/admin/authors',
+      icon: 'Layers2',
+      link: '/admin/categories',
       selected: false
     },
     {

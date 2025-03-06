@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {BookService} from "../../../../../shared/service/book.service";
 import {BookDto} from "../../../../../shared/models/book-dto";
-import {ToastService} from "../../../../../shared/service/toast.service";
 
 @Component({
   selector: 'app-book-create',
@@ -15,7 +14,6 @@ export class BookCreateComponent {
 
   constructor(
     private bookService: BookService,
-    private toastService: ToastService
   ) { }
 
   cancel() {
@@ -26,11 +24,9 @@ export class BookCreateComponent {
     this.bookService.create().subscribe({
       next: (value) => {
         this.visible = false;
-        this.toastService.showToast('Book '+value.title+' created successfully', 'success');
       },
       error:(error) => {
         this.visible = false;
-        this.toastService.showToast('Error!!!', 'error');
       }
     })
   }

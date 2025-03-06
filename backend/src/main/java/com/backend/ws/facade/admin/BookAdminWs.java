@@ -37,14 +37,9 @@ public class BookAdminWs {
         return bookAdminService.deleteByRef(ref);
     }
 
-    @GetMapping("author/firstname/{firstName}")
-    public List<BookDto> findByAuthorFirstName(@PathVariable String firstName) {
-        return converter.toDtoList(bookAdminService.findByAuthorFirstName(firstName));
-    }
-
-    @GetMapping("author/id/{id}")
-    public List<BookDto> findByAuthorId(@PathVariable Long id) {
-        return converter.toDtoList(bookAdminService.findByAuthorId(id));
+    @GetMapping("author/{author}")
+    public List<BookDto> findByAuthor(@PathVariable String author) {
+        return converter.toDtoList(bookAdminService.findByAuthor(author));
     }
 
     @GetMapping("")

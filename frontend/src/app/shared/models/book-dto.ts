@@ -1,6 +1,5 @@
-import {AuthorDto} from "./author-dto";
-import {BookCategoryDto} from "./book-category-dto";
 import {BaseDto} from "./base-dto";
+import {BookCategoryDto} from "./book-category-dto";
 
 export class BookDto extends BaseDto{
 
@@ -8,8 +7,8 @@ export class BookDto extends BaseDto{
   ref: string;
   description: string
   price: number;
-  /*author: AuthorDto
-  category: BookCategoryDto*/
+  author: string
+  category: BookCategoryDto
 
   constructor() {
     super();
@@ -17,7 +16,7 @@ export class BookDto extends BaseDto{
     this.ref = '';
     this.description = '';
     this.price = 0;
-    /*this.author = new AuthorDto();
-    this.category = new BookCategoryDto();*/
+    this.author = '';
+    this.category = new BookCategoryDto();
   }
 }

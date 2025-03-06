@@ -10,7 +10,7 @@ public class BookDto {
     private String ref;
     private String description;
     private BigDecimal price;
-    private AuthorDto author;
+    private String author;
     private BookCategoryDto category;
 
     public Long getId() {
@@ -53,11 +53,11 @@ public class BookDto {
         this.price = price;
     }
 
-    public AuthorDto getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(AuthorDto author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

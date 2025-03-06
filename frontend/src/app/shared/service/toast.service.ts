@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
-  toasts: { message: string; type: 'success' | 'error' | 'info' }[] = [];
+  constructor(private snackBar: MatSnackBar) {}
 
-  showToast(message: string, type: 'success' | 'error' | 'info' = 'info') {
-    this.toasts.push({ message, type });
-
-    setTimeout(() => {
-      this.toasts.shift();
-    }, 3000); // Auto-hide after 3 seconds
+  show(message: string, action = 'Close', duration = 3000) {
+    this.snackBar.open(message, action, {
+      duration,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
   }
 }

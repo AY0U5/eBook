@@ -42,6 +42,7 @@ public class BookCategoryAdminWs {
         return converter.toDto(bookCategoryAdminService.findByName(name));
     }
 
+    @GetMapping("")
     public List<BookCategoryDto> findAll() {
         return converter.toDtoList(bookCategoryAdminService.findAll());
     }

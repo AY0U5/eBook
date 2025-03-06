@@ -7,6 +7,8 @@ import {LucideAngularModule,BookPlus,Search}
   from "lucide-angular";
 import { BookCreateComponent } from './book/book-create/book-create.component';
 import {FormsModule} from "@angular/forms";
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
 
 
 
@@ -14,7 +16,9 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     DashboardComponent,
     BookListComponent,
-    BookCreateComponent
+    BookCreateComponent,
+    CategoryListComponent,
+    CategoryCreateComponent
   ],
   imports: [
     CommonModule,

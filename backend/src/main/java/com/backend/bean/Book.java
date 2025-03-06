@@ -15,8 +15,7 @@ public class Book {
     private String ref;
     private String description;
     private BigDecimal price;
-    @ManyToOne
-    private Author author;
+    private String author;
     @ManyToOne
     private BookCategory category;
 
@@ -60,11 +59,11 @@ public class Book {
         this.price = price;
     }
 
-    public Author getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

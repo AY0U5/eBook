@@ -12,7 +12,6 @@ public interface BookDao extends JpaRepository<Book,Long> {
     List<Book> findByTitle(String title);
     Book findByRef(String ref);
     int deleteByRef(String ref);
-    List<Book> findByAuthorFirstName(String firstName);
-    List<Book> findByAuthorId(Long id);
-    Book findByTitleAndAuthorLastName(String title, String lastName);
+    List<Book> findByAuthor(String author);
+    Book findByTitleAndAuthor(String title, String author);
 }

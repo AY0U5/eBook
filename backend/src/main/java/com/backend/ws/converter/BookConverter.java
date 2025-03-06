@@ -2,7 +2,6 @@ package com.backend.ws.converter;
 
 import com.backend.bean.Book;
 import com.backend.ws.dto.BookDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,11 +10,11 @@ import java.util.stream.Collectors;
 @Component
 public class BookConverter {
 
-    @Autowired
-    private AuthorConverter authorConverter;
+    private final BookCategoryConverter bookCategoryConverter;
 
-    @Autowired
-    private BookCategoryConverter bookCategoryConverter;
+    public BookConverter(BookCategoryConverter bookCategoryConverter) {
+        this.bookCategoryConverter = bookCategoryConverter;
+    }
 
     public Book toEntity(BookDto dto) {
         if (dto == null) {
@@ -28,7 +27,7 @@ public class BookConverter {
         book.setRef(dto.getRef());
         book.setDescription(dto.getDescription());
         book.setPrice(dto.getPrice());
-        book.setAuthor(authorConverter.toEntity(dto.getAuthor()));
+        book.setAuthor(dto.getAuthor());
         book.setCategory(bookCategoryConverter.toEntity(dto.getCategory()));
 
         return book;
@@ -45,7 +44,7 @@ public class BookConverter {
         dto.setRef(book.getRef());
         dto.setDescription(book.getDescription());
         dto.setPrice(book.getPrice());
-        dto.setAuthor(authorConverter.toDto(book.getAuthor()));
+        dto.setAuthor(book.getAuthor());
         dto.setCategory(bookCategoryConverter.toDto(book.getCategory()));
 
         return dto;

@@ -15,9 +15,7 @@ public interface BookAdminService {
     @Transactional
     int deleteByRef(String ref);
 
-    List<Book> findByAuthorFirstName(String firstName);
-
-    List<Book> findByAuthorId(Long id);
+    List<Book> findByAuthor(String author);
 
     List<Book> findAll();
 

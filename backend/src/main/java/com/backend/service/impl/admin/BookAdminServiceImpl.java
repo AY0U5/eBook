@@ -36,13 +36,8 @@ public class BookAdminServiceImpl implements BookAdminService {
     }
 
     @Override
-    public List<Book> findByAuthorFirstName(String firstName) {
-        return dao.findByAuthorFirstName(firstName);
-    }
-
-    @Override
-    public List<Book> findByAuthorId(Long id) {
-        return dao.findByAuthorId(id);
+    public List<Book> findByAuthor(String author) {
+        return dao.findByAuthor(author);
     }
 
     @Override
@@ -52,7 +47,7 @@ public class BookAdminServiceImpl implements BookAdminService {
 
     @Override
     public Book save(Book book) {
-        Book byTitleAndAuthorLastName = dao.findByTitleAndAuthorLastName(book.getTitle(), book.getAuthor().getLastName());
+        Book byTitleAndAuthorLastName = dao.findByTitleAndAuthor(book.getTitle(), book.getAuthor());
         if (byTitleAndAuthorLastName != null) {
             throw new RuntimeException("Book already exists");
         }

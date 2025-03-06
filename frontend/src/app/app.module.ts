@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import {OpenModule} from "./pages/view/open/open.module";
 import {AdminModule} from "./pages/view/admin/admin.module";
 import {HttpClientModule} from "@angular/common/http";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import {HttpClientModule} from "@angular/common/http";
     AdminModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

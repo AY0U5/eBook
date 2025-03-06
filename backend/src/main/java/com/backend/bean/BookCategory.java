@@ -10,6 +10,7 @@ public class BookCategory {
     @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "book_category_seq")
     private Long id;
     private String name;
+    @Column(length = 2000)
     private String description;
     private String ref;
 
