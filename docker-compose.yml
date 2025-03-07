@@ -14,6 +14,21 @@ services:
     networks:
       - spring-demo
     restart: unless-stopped
+  minio:
+    container_name: minio-ebook
+    image: minio/minio
+    command: server --console-address ":9001" /data
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    volumes:
+      - ./data/minio_data:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+    networks:
+      - spring-demo
+    restart: unless-stopped
 #  ebook-api:
 #    container_name: ebook-api
 #    image: ebook/ebook:1.0.0

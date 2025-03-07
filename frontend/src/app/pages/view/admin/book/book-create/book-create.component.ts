@@ -1,36 +1,62 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookService} from "../../../../../shared/service/book.service";
 import {BookDto} from "../../../../../shared/models/book-dto";
+import {ToastService} from "../../../../../shared/service/toast.service";
+import {BookCategoryDto} from "../../../../../shared/models/book-category-dto";
+import {CategoryService} from "../../../../../shared/service/category.service";
 
 @Component({
   selector: 'app-book-create',
   templateUrl: './book-create.component.html',
   styleUrl: './book-create.component.css'
 })
-export class BookCreateComponent {
+export class BookCreateComponent implements OnInit{
 
-  authors = ['Voltaire', 'Victor Hugo', 'Jane Austen', 'George Orwell'];
-  categories = ['Science Fiction', 'Romance', 'Fantasy', 'History'];
+  file: File ;
+  categories: Array<BookCategoryDto>
 
   constructor(
     private bookService: BookService,
+    private toast: ToastService,
+    private bookCategoryService: CategoryService
   ) { }
+
+  ngOnInit() {
+    this.findAllCategories();
+  }
+
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+  }
 
   cancel() {
     this.visible = false;
   }
 
   saveBook() {
-    this.bookService.create().subscribe({
+    this.bookService.create(this.file).subscribe({
       next: (value) => {
+        this.items.push(value);
         this.visible = false;
+        this.toast.show('Book created successfully');
       },
       error:(error) => {
         this.visible = false;
+        this.toast.show('Error creating book');
       }
     })
   }
 
+  findAllCategories() {
+    this.bookCategoryService.findAll().subscribe({
+      next: (value) => {
+        this.categories = value;
+      },
+      error: (error) => {
+        this.toast.show('Error fetching categories');
+      }
+    })
+  }
 
   get visible(): boolean {
     return this.bookService.visible;

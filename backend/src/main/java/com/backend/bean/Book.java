@@ -14,6 +14,7 @@ public class Book {
     private String title;
     private String ref;
     private String description;
+    private String pictureName;
     private BigDecimal price;
     private String author;
     @ManyToOne
@@ -73,5 +74,13 @@ public class Book {
 
     public void setCategory(BookCategory category) {
         this.category = category;
+    }
+
+    public String getPictureName() {
+        return pictureName;
+    }
+
+    public void setPictureName(String pictureName) {
+        this.pictureName = pictureName;
     }
 }

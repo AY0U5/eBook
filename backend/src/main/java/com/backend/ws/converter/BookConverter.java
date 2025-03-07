@@ -26,6 +26,7 @@ public class BookConverter {
         book.setTitle(dto.getTitle());
         book.setRef(dto.getRef());
         book.setDescription(dto.getDescription());
+        book.setPictureName(dto.getPictureName());
         book.setPrice(dto.getPrice());
         book.setAuthor(dto.getAuthor());
         book.setCategory(bookCategoryConverter.toEntity(dto.getCategory()));
@@ -43,6 +44,7 @@ public class BookConverter {
         dto.setTitle(book.getTitle());
         dto.setRef(book.getRef());
         dto.setDescription(book.getDescription());
+        dto.setPictureName(book.getPictureName());
         dto.setPrice(book.getPrice());
         dto.setAuthor(book.getAuthor());
         dto.setCategory(bookCategoryConverter.toDto(book.getCategory()));

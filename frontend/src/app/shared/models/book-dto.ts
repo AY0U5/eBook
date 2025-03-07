@@ -6,6 +6,7 @@ export class BookDto extends BaseDto{
   title: string;
   ref: string;
   description: string
+  pictureName: string
   price: number;
   author: string
   category: BookCategoryDto
@@ -15,6 +16,7 @@ export class BookDto extends BaseDto{
     this.title = '';
     this.ref = '';
     this.description = '';
+    this.pictureName = '';
     this.price = 0;
     this.author = '';
     this.category = new BookCategoryDto();

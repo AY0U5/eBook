@@ -9,6 +9,7 @@ public class BookDto {
     private String title;
     private String ref;
     private String description;
+    private String pictureName;
     private BigDecimal price;
     private String author;
     private BookCategoryDto category;
@@ -67,5 +68,13 @@ public class BookDto {
 
     public void setCategory(BookCategoryDto category) {
         this.category = category;
+    }
+
+    public String getPictureName() {
+        return pictureName;
+    }
+
+    public void setPictureName(String pictureName) {
+        this.pictureName = pictureName;
     }
 }

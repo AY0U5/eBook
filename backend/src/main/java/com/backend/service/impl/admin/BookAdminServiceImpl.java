@@ -1,8 +1,10 @@
 package com.backend.service.impl.admin;
 
 import com.backend.bean.Book;
+import com.backend.bean.BookCategory;
 import com.backend.dao.BookDao;
 import com.backend.service.facade.admin.BookAdminService;
+import com.backend.service.facade.admin.BookCategoryAdminService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,14 @@ import java.util.List;
 public class BookAdminServiceImpl implements BookAdminService {
 
     private final BookDao dao;
+    private final BookCategoryAdminService bookCategoryAdminService;
 
-    public BookAdminServiceImpl(BookDao dao) {
+    public BookAdminServiceImpl(
+            BookDao dao,
+            BookCategoryAdminService bookCategoryAdminService
+    ) {
         this.dao = dao;
+        this.bookCategoryAdminService = bookCategoryAdminService;
     }
 
     @Override
@@ -50,6 +57,10 @@ public class BookAdminServiceImpl implements BookAdminService {
         Book byTitleAndAuthorLastName = dao.findByTitleAndAuthor(book.getTitle(), book.getAuthor());
         if (byTitleAndAuthorLastName != null) {
             throw new RuntimeException("Book already exists");
+        }
+        BookCategory byRef = bookCategoryAdminService.findByRef(book.getCategory().getRef());
+        if (byRef == null) {
+            throw new RuntimeException("Category not found");
         }
         String ref = book.getTitle().toLowerCase().replace(" ", "-")+ "-" +dao.count();
         book.setRef(ref);

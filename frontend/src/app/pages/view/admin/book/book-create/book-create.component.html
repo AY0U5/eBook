@@ -23,13 +23,17 @@
         <input type="text" [(ngModel)]="item.author"
                class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
-
+      <div>
+        <label class="block text-sm font-medium text-gray-700">File</label>
+        <input type="file" (change)="onFileSelected($event)"
+               class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      </div>
       <!-- Category Dropdown -->
       <div>
         <label class="block text-sm font-medium text-gray-700">Category</label>
         <select
                 class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+          <option *ngFor="let category of categories" [value]="category">{{category.name}}</option>
         </select>
       </div>
     </div>

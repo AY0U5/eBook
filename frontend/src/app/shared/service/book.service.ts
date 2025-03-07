@@ -15,8 +15,11 @@ export class BookService {
 
   constructor(private http : HttpClient) { }
 
-  public create():Observable<BookDto>{
-    return this.http.post<BookDto>(this.API + "register", this.item);
+  public create(selectedFile: File):Observable<BookDto>{
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('item', JSON.stringify(this.item));
+    return this.http.post<BookDto>(this.API + "register", formData);
   }
 
   get API(){
