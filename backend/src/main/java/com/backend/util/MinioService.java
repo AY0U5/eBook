@@ -2,6 +2,7 @@ package com.backend.util;
 
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
+import io.minio.RemoveObjectArgs;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,9 +37,23 @@ public class MinioService {
                             .contentType(file.getContentType())
                             .build()
             );
-            return fileName;  // return filename so frontend can use it if needed
+            return fileName;
         } catch (Exception e) {
             throw new RuntimeException("Error uploading file to MinIO", e);
         }
     }
+
+    public void deleteFile(String fileName) {
+        try {
+            minioClient.removeObject(
+                    RemoveObjectArgs.builder()
+                            .bucket(bucketName)
+                            .object(fileName)
+                            .build()
+            );
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting file from MinIO", e);
+        }
+    }
+
 }

@@ -5,6 +5,7 @@ import com.backend.bean.BookCategory;
 import com.backend.dao.BookDao;
 import com.backend.service.facade.admin.BookAdminService;
 import com.backend.service.facade.admin.BookCategoryAdminService;
+import com.backend.util.MinioService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,16 @@ public class BookAdminServiceImpl implements BookAdminService {
 
     private final BookDao dao;
     private final BookCategoryAdminService bookCategoryAdminService;
+    private final MinioService minioService;
 
     public BookAdminServiceImpl(
             BookDao dao,
-            BookCategoryAdminService bookCategoryAdminService
+            BookCategoryAdminService bookCategoryAdminService,
+            MinioService minioService
     ) {
         this.dao = dao;
         this.bookCategoryAdminService = bookCategoryAdminService;
+        this.minioService = minioService;
     }
 
     @Override
@@ -39,6 +43,11 @@ public class BookAdminServiceImpl implements BookAdminService {
     @Transactional
     @Override
     public int deleteByRef(String ref) {
+        Book byRef = dao.findByRef(ref);
+        if (byRef == null) {
+            throw new RuntimeException("Book not found");
+        }
+        minioService.deleteFile(byRef.getPictureName());
         return dao.deleteByRef(ref);
     }
 

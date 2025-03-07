@@ -23,20 +23,32 @@
         <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
           <thead class="bg-gray-100 border-b border-gray-200">
           <tr>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">#</th>
             <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Name</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Description</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Price</th>
             <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Author</th>
             <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Category</th>
             <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Actions</th>
           </tr>
           </thead>
           <tbody>
-          <tr class="border-b hover:bg-gray-50">
-            <td class="px-4 py-2 text-sm text-gray-900">Candide</td>
-            <td class="px-4 py-2 text-sm text-gray-900">Voltaire</td>
-            <td class="px-4 py-2 text-sm text-gray-900">Science fiction</td>
-            <td class="px-4 py-2 text-sm space-x-2">
+          <tr class="border-b hover:bg-gray-50"
+              *ngFor="let item of items"
+          >
+            <td class="px-4 py-2 text-sm text-gray-900">
+              <img class="w-20 h-16 rounded-lg" src="http://localhost:9000/uploads/{{item.pictureName}}">
+            </td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{item.title}}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{item.description}}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{item.price}}$</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{item.author}}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{item.category?.name}}</td>
+            <td class="flex flex-col gap-2 px-4 py-2 text-sm">
               <button class="px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded hover:bg-blue-600">Edit</button>
-              <button class="px-3 py-1 text-xs font-medium text-white bg-red-500 rounded hover:bg-red-600">Delete</button>
+              <button class="px-3 py-1 text-xs font-medium text-white bg-red-500 rounded hover:bg-red-600"
+                      (click)="deleteByRef(item.ref)"
+              >Delete</button>
             </td>
           </tr>
           </tbody>

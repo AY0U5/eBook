@@ -22,6 +22,14 @@ export class BookService {
     return this.http.post<BookDto>(this.API + "register", formData);
   }
 
+  public findAll():Observable<Array<BookDto>>{
+    return this.http.get<Array<BookDto>>(this.API);
+  }
+
+  public deleteByRef(ref:string):Observable<number>{
+    return this.http.delete<number>(this.API + "ref/" + ref);
+  }
+
   get API(){
     return environment.BACK_API + "admin/books/";
   }
