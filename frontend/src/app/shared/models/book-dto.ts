@@ -17,7 +17,6 @@ export class BookDto extends BaseDto{
     this.ref = '';
     this.description = '';
     this.pictureName = '';
-    this.price = 0;
     this.author = '';
     this.category = new BookCategoryDto();
   }

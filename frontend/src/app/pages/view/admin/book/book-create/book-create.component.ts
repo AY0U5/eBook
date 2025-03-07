@@ -38,10 +38,12 @@ export class BookCreateComponent implements OnInit{
       next: (value) => {
         this.items.push(value);
         this.visible = false;
+        this.item = new BookDto();
         this.toast.show('Book created successfully');
       },
       error:(error) => {
         this.visible = false;
+        this.item = new BookDto();
         this.toast.show('Error creating book');
       }
     })

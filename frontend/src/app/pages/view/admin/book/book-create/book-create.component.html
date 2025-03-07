@@ -31,9 +31,9 @@
       <!-- Category Dropdown -->
       <div>
         <label class="block text-sm font-medium text-gray-700">Category</label>
-        <select
+        <select [(ngModel)]="item.category"
                 class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option *ngFor="let category of categories" [value]="category">{{category.name}}</option>
+          <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
         </select>
       </div>
     </div>
