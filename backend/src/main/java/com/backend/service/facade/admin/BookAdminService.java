@@ -24,4 +24,6 @@ public interface BookAdminService {
     Page<Book> findAll(Pageable pageable);
 
     Book edit(Book book);
+
+    List<Book> findByTitleContainingOrAuthorContainingOrCategoryNameContaining(String title, String author, String categoryName);
 }

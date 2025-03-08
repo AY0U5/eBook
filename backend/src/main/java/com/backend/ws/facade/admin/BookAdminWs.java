@@ -86,6 +86,14 @@ public class BookAdminWs {
         return converter.toDto(bookAdminService.edit(entity));
     }
 
+    @GetMapping("search")
+    public List<Book> findByTitleContainingOrAuthorContainingOrCategoryNameContaining(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) String categoryName) {
+        return bookAdminService.findByTitleContainingOrAuthorContainingOrCategoryNameContaining(title, author, categoryName);
+    }
+
     public Page<Book> findAll(Pageable pageable) {
         return bookAdminService.findAll(pageable);
     }

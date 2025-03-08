@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BookDto} from "../models/book-dto";
 import {environment} from "../../../environment/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -38,6 +38,21 @@ export class BookService {
     }
     formData.append('item', JSON.stringify(this.item));
     return this.http.put<BookDto>(this.API + "edit", formData);
+  }
+
+  public search(title: string , author: string , categoryName: string ):Observable<Array<BookDto>>{
+    let params = new HttpParams();
+
+    if (title) {
+      params = params.set('title', title);
+    }
+    if (author) {
+      params = params.set('author', author);
+    }
+    if (categoryName) {
+      params = params.set('categoryName', categoryName);
+    }
+    return this.http.get<Array<BookDto>>(this.API + "search/" + params);
   }
 
   get API(){

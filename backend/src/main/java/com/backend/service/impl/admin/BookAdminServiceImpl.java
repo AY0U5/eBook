@@ -96,6 +96,14 @@ public class BookAdminServiceImpl implements BookAdminService {
         return dao.save(book);
     }
 
+    @Override
+    public List<Book> findByTitleContainingOrAuthorContainingOrCategoryNameContaining(String title, String author, String categoryName) {
+        return dao.findByTitleContainingOrAuthorContainingOrCategoryNameContaining(
+                title.substring(0, 1).toUpperCase() + title.substring(1).toLowerCase(),
+                author.substring(0, 1).toUpperCase() + author.substring(1).toLowerCase(),
+                categoryName.substring(0, 1).toUpperCase()+categoryName.substring(1).toLowerCase());
+    }
+
     private void copy(Book source, Book target) {
         target.setTitle(source.getTitle());
         target.setRef(source.getRef());

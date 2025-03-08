@@ -10,6 +10,12 @@ import {ToastService} from "../../../../../shared/service/toast.service";
 })
 export class BookListComponent implements OnInit{
 
+  title: string = '';
+  author: string = '';
+  categoryName: string = '';
+  page: number = 1;
+  itemsPerPage: number = 7;
+
   ngOnInit(): void {
     this.findAll();
   }
@@ -18,7 +24,6 @@ export class BookListComponent implements OnInit{
     private bookService: BookService,
     private toast: ToastService
   ) { }
-
 
   findAll(){
     this.bookService.findAll().subscribe(data => {
@@ -31,6 +36,27 @@ export class BookListComponent implements OnInit{
       next: () => {
         this.items = this.items.filter(item => item.ref !== ref);
         this.toast.show("Book deleted successfully");
+      }
+    });
+  }
+
+  onSearch(event: Event): void {
+    event.preventDefault();
+
+    if (!this.title.trim() && !this.author.trim() && !this.categoryName.trim()) {
+      this.findAll();
+    } else {
+      this.search(this.title, this.author, this.categoryName);
+    }
+  }
+
+  search(title: string, author: string, categoryName: string){
+    this.bookService.search(title, author, categoryName).subscribe({
+      next: (data) => {
+        this.items = data;
+      },
+      error: (err) => {
+        this.toast.show("Book not found")
       }
     });
   }

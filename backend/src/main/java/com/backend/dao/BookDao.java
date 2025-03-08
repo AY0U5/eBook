@@ -14,4 +14,5 @@ public interface BookDao extends JpaRepository<Book,Long> {
     int deleteByRef(String ref);
     List<Book> findByAuthor(String author);
     Book findByTitleAndAuthor(String title, String author);
+    List<Book> findByTitleContainingOrAuthorContainingOrCategoryNameContaining(String title, String author, String categoryName);
 }

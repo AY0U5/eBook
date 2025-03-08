@@ -37,11 +37,6 @@ public class BookCategoryAdminWs {
         return converter.toDto(bookCategoryAdminService.findByRef(ref));
     }
 
-    /*@GetMapping("/name/{name}")
-    public BookCategoryDto findByName(@PathVariable String name) {
-        return converter.toDto(bookCategoryAdminService.findByName(name));
-    }*/
-
     @GetMapping("/name/{name}")
     public List<BookCategory> findByNameContaining(@PathVariable String name) {
         return bookCategoryAdminService.findByNameContaining(name);
