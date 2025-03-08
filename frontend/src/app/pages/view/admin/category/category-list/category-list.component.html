@@ -13,6 +13,7 @@
         <div class="bg-stone-200 rounded flex items-center px-4 py-2 text-sm w-96">
           <lucide-angular name="Search" size="20px"></lucide-angular>
           <input
+            (input)="onSearch($event)"
             type="text"
             placeholder="Search"
             class="w-full bg-transparent placeholder:text-stone-400 focus:outline-none ml-2"
@@ -30,21 +31,25 @@
           </thead>
           <tbody>
           <tr class="border-b hover:bg-gray-50"
-            *ngFor="let item of items"
-          >
-            <td class="px-4 py-2 text-sm text-gray-900">{{item.name}}</td>
-            <td class="px-4 py-2 text-sm text-gray-900">{{item.description}}</td>
+              *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+            <td class="px-4 py-2 text-sm text-gray-900">{{ item.name }}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{ item.description }}</td>
             <td class="flex flex-col gap-1 px-4 py-2 text-sm">
               <button class="px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded hover:bg-blue-600"
-                (click)="openEdit(item)"
-              >Edit</button>
+                      (click)="openEdit(item)">
+                Edit
+              </button>
               <button class="px-3 py-1 text-xs font-medium text-white bg-red-500 rounded hover:bg-red-600"
-                (click)="deleteByRef(item.ref)"
-              >Delete</button>
+                      (click)="deleteByRef(item.ref)">
+                Delete
+              </button>
             </td>
           </tr>
           </tbody>
         </table>
+        <div class="flex justify-center mt-4">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
       </div>
     </div>
   </div>

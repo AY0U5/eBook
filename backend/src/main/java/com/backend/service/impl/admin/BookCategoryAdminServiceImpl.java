@@ -72,6 +72,11 @@ public class BookCategoryAdminServiceImpl implements BookCategoryAdminService {
         return dao.save(byRef);
     }
 
+    @Override
+    public List<BookCategory> findByNameContaining(String name) {
+        return dao.findByNameContaining(name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase());
+    }
+
     private void copy(BookCategory source, BookCategory target){
         if(source.getName() != null){
             target.setName(source.getName());

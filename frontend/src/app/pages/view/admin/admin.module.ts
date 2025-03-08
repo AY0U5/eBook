@@ -11,6 +11,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import { BookEditComponent } from './book/book-edit/book-edit.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -28,7 +29,8 @@ import { BookEditComponent } from './book/book-edit/book-edit.component';
     CommonModule,
     ComponentsModule,
     LucideAngularModule.pick({BookPlus, Search}),
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

@@ -13,33 +13,39 @@ export class SidebarComponent {
       title: 'Dashboard',
       icon: 'LayoutDashboard',
       link: '/admin/',
-      selected: true
     },
     {
       title: 'Category',
       icon: 'Layers2',
       link: '/admin/categories',
-      selected: false
     },
     {
       title: 'Books',
       icon: 'LibraryBig',
       link: '/admin/books',
-      selected: false
     },
     {
       title: 'Orders',
       icon: 'Package',
       link: '/admin/orders',
-      selected: false
     }
   ]
 
+  selectedMenuItem: any = this.menuItems[0];
+
   constructor(private router: Router) {
+    this.updateSelectedMenuItem(this.router.url);
   }
 
   selectMenuItem(selectedItem: any): void {
-    this.menuItems.forEach(item => item.selected = (item === selectedItem));
+    this.selectedMenuItem = selectedItem;
     this.router.navigate([selectedItem.link]);
+  }
+
+  updateSelectedMenuItem(currentUrl: string): void {
+    const foundItem = this.menuItems.find(item => item.link === currentUrl);
+    if (foundItem) {
+      this.selectedMenuItem = foundItem;
+    }
   }
 }

@@ -34,6 +34,10 @@ export class CategoryService {
     return this.http.put<BookCategoryDto>(this.API +"edit",this.item)
   }
 
+  public findByName(name:string):Observable<Array<BookCategoryDto>>{
+    return this.http.get<Array<BookCategoryDto>>(this.API + "name/" + name)
+  }
+
   get API(){
     return environment.BACK_API + 'admin/book-categories/';
   }

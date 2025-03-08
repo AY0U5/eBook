@@ -16,6 +16,9 @@ export class CategoryListComponent implements OnInit{
   ) {
   }
 
+  page: number = 1;
+  itemsPerPage: number = 7;
+
   ngOnInit() {
     this.findAll();
   }
@@ -28,6 +31,28 @@ export class CategoryListComponent implements OnInit{
     this.categoryService.findAll().subscribe({
       next: (value) => {
         this.items = value;
+      }
+    })
+  }
+
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+
+    if (value.trim()) {
+      this.findByName(value);
+    } else {
+      this.findAll();
+    }
+  }
+
+  findByName(name: string){
+    this.categoryService.findByName(name).subscribe({
+      next: (category) => {
+        this.items = category;
+      },
+      error: (err) => {
+        this.toast.show("Category not found")
       }
     })
   }

@@ -25,4 +25,6 @@ public interface BookCategoryAdminService {
     Page<BookCategory> findAll(Pageable pageable);
 
     BookCategory edit(BookCategory category);
+
+    List<BookCategory> findByNameContaining(String name);
 }
