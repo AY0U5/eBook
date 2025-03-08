@@ -12,6 +12,7 @@ export class BookService {
   private _item :BookDto = new BookDto();
   private _items :Array<BookDto> = new Array<BookDto>();
   private _visible: boolean = false;
+  private _editVisible: boolean = false;
 
   constructor(private http : HttpClient) { }
 
@@ -30,6 +31,15 @@ export class BookService {
     return this.http.delete<number>(this.API + "ref/" + ref);
   }
 
+  public edit(selectedFile: File):Observable<BookDto>{
+    const formData = new FormData();
+    if (selectedFile) {
+      formData.append('file', selectedFile);
+    }
+    formData.append('item', JSON.stringify(this.item));
+    return this.http.put<BookDto>(this.API + "edit", formData);
+  }
+
   get API(){
     return environment.BACK_API + "admin/books/";
   }
@@ -42,6 +52,13 @@ export class BookService {
     this._visible = value;
   }
 
+  get editVisible(): boolean {
+    return this._editVisible;
+  }
+
+  set editVisible(value: boolean) {
+    this._editVisible = value;
+  }
 
   get item(): BookDto {
     if (this._item == null) {

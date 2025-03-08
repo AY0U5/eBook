@@ -72,6 +72,20 @@ public class BookAdminWs {
         return converter.toDto(bookAdminService.save(entity));
     }
 
+    @PutMapping("edit")
+    public BookDto edit(
+            @RequestParam("item") String book,
+            @RequestParam(name = "file", required = false) MultipartFile file
+    ) throws JsonProcessingException{
+        BookDto dto = objectMapper.readValue(book, BookDto.class);
+        Book entity = converter.toEntity(dto);
+        if (file != null && !file.isEmpty()){
+            String filename = minioService.uploadFile(file);
+            entity.setPictureName(filename);
+        }
+        return converter.toDto(bookAdminService.edit(entity));
+    }
+
     public Page<Book> findAll(Pageable pageable) {
         return bookAdminService.findAll(pageable);
     }

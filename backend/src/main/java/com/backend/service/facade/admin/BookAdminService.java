@@ -22,4 +22,6 @@ public interface BookAdminService {
     Book save(Book book);
 
     Page<Book> findAll(Pageable pageable);
+
+    Book edit(Book book);
 }

@@ -80,4 +80,29 @@ public class BookAdminServiceImpl implements BookAdminService {
     public Page<Book> findAll(Pageable pageable) {
         return dao.findAll(pageable);
     }
+
+    @Override
+    public Book edit(Book book){
+        Book byRef = dao.findByRef(book.getRef());
+        if (byRef == null) {
+            throw new RuntimeException("Book not found");
+        }
+        BookCategory byRef1 = bookCategoryAdminService.findByRef(book.getCategory().getRef());
+        if (byRef1 == null) {
+            throw new RuntimeException("Category not found");
+        }
+        minioService.deleteFile(byRef.getPictureName());
+        copy(book, byRef);
+        return dao.save(book);
+    }
+
+    private void copy(Book source, Book target) {
+        target.setTitle(source.getTitle());
+        target.setRef(source.getRef());
+        target.setDescription(source.getDescription());
+        target.setPrice(source.getPrice());
+        target.setAuthor(source.getAuthor());
+        target.setCategory(source.getCategory());
+        target.setPictureName(source.getPictureName());
+    }
 }

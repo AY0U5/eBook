@@ -35,6 +35,19 @@ export class BookListComponent implements OnInit{
     });
   }
 
+  openEdit(item: BookDto){
+    this.editVisible = true;
+    this.item = item;
+  }
+
+  get editVisible(): boolean {
+    return this.bookService.editVisible;
+  }
+
+  set editVisible(value: boolean) {
+    this.bookService.editVisible = value;
+  }
+
   openCreate() {
     this.visible = true;
   }

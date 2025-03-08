@@ -10,6 +10,7 @@ import {FormsModule} from "@angular/forms";
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { BookEditComponent } from './book/book-edit/book-edit.component';
 
 
 
@@ -20,7 +21,8 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
     BookCreateComponent,
     CategoryListComponent,
     CategoryCreateComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    BookEditComponent
   ],
   imports: [
     CommonModule,
