@@ -1,0 +1,24 @@
+<header [class.shadow-md]="scrolledUp" class="fixed w-full bg-white transition-shadow duration-300 z-10">
+  <nav class="flex justify-between items-center py-6 px-8">
+    <div>
+      <lucide-angular name="LayoutGrid" class="cursor-pointer" (click)="toggleMenu()"></lucide-angular>
+      <div *ngIf="menuOpen" class="absolute border border-black px-10 py-2 mt-2 rounded bg-gray-200">
+        <ul class="flex flex-col gap-5">
+          <li class="cursor-pointer">Home</li>
+          <li class="cursor-pointer">Books</li>
+          <li class="cursor-pointer">About</li>
+          <li class="cursor-pointer">Contact</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+        <h5>E-BOOK</h5>
+    </div>
+    <div class="flex gap-4">
+      <lucide-angular name="Heart" class="cursor-pointer"></lucide-angular>
+      <lucide-angular name="ShoppingCart" class="cursor-pointer" (click)="openCart()"></lucide-angular>
+      <lucide-angular name="User" class="cursor-pointer"></lucide-angular>
+    </div>
+  </nav>
+  <app-cart/>
+</header>
