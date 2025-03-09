@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(
                                 "/auth/**",
+                                "/open/**",
                                 "/admin/**"
                         ).permitAll()
                         .anyRequest()

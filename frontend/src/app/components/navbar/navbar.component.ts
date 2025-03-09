@@ -1,5 +1,5 @@
 import {Component, HostListener} from '@angular/core';
-import {CartService} from "../../shared/service/cart.service";
+import {CartService} from "../../shared/service/admin/cart.service";
 
 @Component({
   selector: 'app-navbar',

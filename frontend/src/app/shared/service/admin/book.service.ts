@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BookDto} from "../models/book-dto";
-import {environment} from "../../../environment/environment";
+import {BookDto} from "../../models/book-dto";
+import {environment} from "../../../../environment/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 

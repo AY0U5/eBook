@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CategoryService} from "../../../../../shared/service/category.service";
+import {CategoryService} from "../../../../../shared/service/admin/category.service";
 import {BookCategoryDto} from "../../../../../shared/models/book-category-dto";
 import {ToastService} from "../../../../../shared/service/toast.service";
 

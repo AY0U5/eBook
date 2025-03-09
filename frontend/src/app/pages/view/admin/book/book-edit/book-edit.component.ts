@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {BookService} from "../../../../../shared/service/book.service";
+import {BookService} from "../../../../../shared/service/admin/book.service";
 import {ToastService} from "../../../../../shared/service/toast.service";
 import {BookDto} from "../../../../../shared/models/book-dto";
 import {BookCategoryDto} from "../../../../../shared/models/book-category-dto";
-import {CategoryService} from "../../../../../shared/service/category.service";
+import {CategoryService} from "../../../../../shared/service/admin/category.service";
 
 @Component({
   selector: 'app-book-edit',

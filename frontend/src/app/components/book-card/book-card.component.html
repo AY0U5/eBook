@@ -1,0 +1,25 @@
+<div class="max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+  <div class="h-60 overflow-hidden">
+    <img
+      src="http://localhost:9000/uploads/{{pictureName}}"
+      alt="Book Cover"
+      class="w-full h-full object-fill"
+    />
+  </div>
+
+  <div class="p-5">
+    <h3 class="text-xl font-semibold text-gray-900">{{title}}</h3>
+    <p class="text-sm text-gray-500 mt-1">by <span class="font-medium">{{author}}</span></p>
+    <p class="text-sm text-blue-500 font-semibold mt-2">{{category}}</p>
+    <p class="text-gray-600 mt-2">{{description}}</p>
+
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-lg font-bold text-green-600">${{price}}</span>
+      <button
+        class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+      >
+        View
+      </button>
+    </div>
+  </div>
+</div>
