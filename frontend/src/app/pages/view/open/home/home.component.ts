@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 @Component({
   selector: 'app-home',
@@ -6,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
 
 }

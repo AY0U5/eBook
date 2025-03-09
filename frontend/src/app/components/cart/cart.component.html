@@ -1,6 +1,11 @@
-<div *ngIf="cartVisible" class="absolute top-0 right-0 bg-gray-200 h-[100vh] w-80">
-    <div class="flex justify-between px-4">
+<div *ngIf="cartVisible" class="absolute top-0 right-0 h-[100vh] w-full">
+  <div class="grid grid-cols-4">
+    <div
+      class="bg-stone-950/30 col col-span-3 h-[100vh]"
+    ></div>
+    <div class="flex justify-between px-4 bg-gray-200">
       <h6 class="text-center py-4">Cart</h6>
       <lucide-angular name="X" class="cursor-pointer mt-3" (click)="closeCart()"></lucide-angular>
     </div>
+  </div>
 </div>

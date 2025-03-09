@@ -1,4 +1,4 @@
-<div class="h-[200vh]">
+<div>
   <app-navbar/>
   <div class="px-8 py-32">
     <div>
@@ -6,6 +6,59 @@
         class="absolute left-96 top-[11rem] text-5xl font-black"
       >Unlock the World of Knowledge</p>
       <img src="assets/images/hero.png" alt="hero" class="h-[40rem] w-full rounded-lg">
+      <button
+        class="absolute left-[40rem] bottom-[10rem] bg-white hover:bg-gray-100 px-4 py-4 rounded-lg"
+      >
+        Get a Book
+      </button>
     </div>
+  </div>
+  <div class="px-8 grid grid-cols-3 gap-6 h-96">
+    <div data-aos="fade-right" class="col-span-2">
+      <h2>Who We Are ?</h2>
+      <p class="text-3xl py-4">
+        Welcome to <span class="font-bold">E-BOOK</span> , your go-to place for digital reading!<br>
+        Whether you love books or just read occasionally,<br> our platform has something for you.
+        We offer a huge <br>collection of eBooks in different categories , including fiction, non-fiction,
+        self-improvement, academic resources, and more.
+      </p>
+      <button
+        class="bg-black text-white hover:bg-gray-800 px-4 py-4 rounded-lg"
+      >
+        Read a Book
+      </button>
+    </div>
+    <div data-aos="fade-left">
+      <img src="assets/images/hero2.png" alt="logo" class="w-full h-96 rounded">
+    </div>
+  </div>
+  <div class="flex gap-8 px-8">
+    <app-card
+      data-aos="zoom-in"
+      [title]="'Popular Books'"
+      [message]="'Explore thousands of eBooks from best-selling authors and independent writers.'"
+      [icon]="'BookOpen'"
+    />
+    <app-card
+      data-aos="zoom-in"
+      data-aos-delay="200"
+      [title]="'Instant Access'"
+      [message]="'Download and read your favorite books on any device, anytime.'"
+      [icon]="'CloudDownload'"
+    />
+    <app-card
+      data-aos="zoom-in"
+      data-aos-delay="400"
+      [title]="'User-Friendly Interface'"
+      [message]="'Browse easily, search efficiently, and discover books tailored to your interests.'"
+      [icon]="'LayoutTemplate'"
+    />
+    <app-card
+      data-aos="zoom-in"
+      data-aos-delay="600"
+      [title]="'Affordable & Free eBooks'"
+      [message]="'Enjoy free reads or purchase premium titles at unbeatable prices.'"
+      [icon]="'BookCopy'"
+    />
   </div>
 </div>
