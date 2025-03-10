@@ -22,12 +22,32 @@ public class CartOpenServiceImpl implements CartOpenService {
         return dao.findAll();
     }
 
-    public Cart addToCart(Book book) {
-        Cart cart =new Cart();
+    @Override
+    public Cart save(Cart cart) {
         return dao.save(cart);
     }
 
-    public void deleteById(Long aLong) {
-        dao.deleteById(aLong);
+    @Override
+    public Cart findByRef(String ref) {
+        return dao.findByRef(ref);
+    }
+
+    @Override
+    public Cart addToCart(Book book) {
+        String ref = "cart-"+(dao.count() - 1);
+        Cart cart = dao.findByRef(ref);
+        if (cart != null){
+            cart.getBooks().add(book);
+            cart.setQuantity(cart.getBooks().size());
+            return dao.save(cart);
+        }else {
+            throw new RuntimeException("Cart not found");
+        }
+    }
+
+    @Override
+    public Cart findLastCart(){
+        String ref = "cart-"+(dao.count() - 1);
+        return dao.findByRef(ref);
     }
 }

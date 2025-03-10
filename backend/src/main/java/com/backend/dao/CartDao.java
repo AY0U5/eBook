@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CartDao extends JpaRepository<Cart,Long> {
+
+    Cart findByRef(String ref);
 }

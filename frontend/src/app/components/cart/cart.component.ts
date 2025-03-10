@@ -1,14 +1,35 @@
-import { Component } from '@angular/core';
-import {CartService} from "../../shared/service/admin/cart.service";
+import {Component, OnInit} from '@angular/core';
+import {CartService} from "../../shared/service/open/cart.service";
+import {CartDto} from "../../shared/models/cart-dto";
+import {ToastService} from "../../shared/service/toast.service";
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
 
-  constructor(private cartService: CartService) {
+
+  ngOnInit() {
+    this.findLastCart()
+  }
+
+  constructor(
+    private cartService: CartService,
+    private toast: ToastService
+  ) {
+  }
+
+  findLastCart(){
+    this.cartService.findLastCart().subscribe({
+      next:(data)=>{
+        this.item = data
+      },
+      error:(err)=>{
+        this.toast.show("Error , Sorry try later!")
+      }
+    })
   }
 
   get cartVisible(): boolean {
@@ -21,5 +42,21 @@ export class CartComponent {
 
   closeCart() {
     this.cartService.cartVisible = false;
+  }
+
+  get item(): CartDto {
+    return this.cartService.item;
+  }
+
+  set item(value: CartDto) {
+    this.cartService.item = value;
+  }
+
+  get items(): Array<CartDto> {
+    return this.cartService.items;
+  }
+
+  set items(value: Array<CartDto>) {
+    this.cartService.items = value;
   }
 }

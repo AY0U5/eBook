@@ -1,7 +1,9 @@
 package com.backend;
 
+import com.backend.bean.Cart;
 import com.backend.security.bean.Role;
 import com.backend.security.service.facade.RoleService;
+import com.backend.service.facade.open.CartOpenService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +19,7 @@ public class BackendApplication {
     }
 
     @Bean
-    public CommandLineRunner runner(RoleService roleService){
+    public CommandLineRunner runner(RoleService roleService, CartOpenService cartOpenService){
         return args -> {
             Role roleAdmin = roleService.findByName("ROLE_ADMIN");
             if (roleAdmin == null) {
@@ -30,6 +32,13 @@ public class BackendApplication {
                 Role user = new Role();
                 user.setName("ROLE_USER");
                 roleService.save(user);
+            }
+            Cart firstCart = cartOpenService.findByRef("cart-0");
+            if (firstCart == null) {
+                Cart cart = new Cart();
+                String ref = "cart-0";
+                cart.setRef(ref);
+                cartOpenService.save(cart);
             }
         };
     }

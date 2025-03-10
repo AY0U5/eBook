@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {OpenBookService} from "../../../../shared/service/open/open-book.service";
 import {BookDto} from "../../../../shared/models/book-dto";
+import {CartService} from "../../../../shared/service/open/cart.service";
+import {CartDto} from "../../../../shared/models/cart-dto";
+import {ToastService} from "../../../../shared/service/toast.service";
 
 @Component({
   selector: 'app-books',
@@ -9,7 +12,9 @@ import {BookDto} from "../../../../shared/models/book-dto";
 })
 export class BooksComponent implements OnInit{
 
-  constructor(private service: OpenBookService) {
+  constructor(
+    private service: OpenBookService,
+  ) {
   }
 
   ngOnInit() {
@@ -39,4 +44,5 @@ export class BooksComponent implements OnInit{
   set items(value: Array<BookDto>) {
     this.service.items = value;
   }
+
 }
