@@ -39,6 +39,7 @@ public class CartOpenServiceImpl implements CartOpenService {
         if (cart != null){
             cart.getBooks().add(book);
             cart.setQuantity(cart.getBooks().size());
+            cart.setTotal(cart.getTotal().add(book.getPrice()));
             return dao.save(cart);
         }else {
             throw new RuntimeException("Cart not found");
@@ -49,5 +50,23 @@ public class CartOpenServiceImpl implements CartOpenService {
     public Cart findLastCart(){
         String ref = "cart-"+(dao.count() - 1);
         return dao.findByRef(ref);
+    }
+
+    @Override
+    public Cart removeBook(Book book){
+        String ref = "cart-"+(dao.count() - 1);
+        Cart cart = dao.findByRef(ref);
+        if (cart != null){
+            boolean removed = cart.getBooks().removeIf(b->b.equals(book));
+            if (removed) {
+                cart.setQuantity(cart.getBooks().size());
+                cart.setTotal(cart.getTotal().subtract(book.getPrice()));
+                return dao.save(cart);
+            }else {
+                throw new RuntimeException("Book not found in cart");
+            }
+        }else {
+            throw new RuntimeException("Cart not found");
+        }
     }
 }

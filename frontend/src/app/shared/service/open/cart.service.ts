@@ -21,7 +21,11 @@ export class CartService {
   }
 
   public addToCart(book:BookDto):Observable<CartDto>{
-    return this.http.put<CartDto>(this.API +"book",book);
+    return this.http.put<CartDto>(this.API +"book/add",book);
+  }
+
+  public removeFromCart(book:BookDto):Observable<CartDto>{
+    return this.http.put<CartDto>(this.API +"book/remove",book);
   }
 
   get API(){

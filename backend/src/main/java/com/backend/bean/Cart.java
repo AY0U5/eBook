@@ -2,6 +2,7 @@ package com.backend.bean;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,7 @@ public class Cart {
     private List<Book> books;
     private int quantity;
     private String ref;
+    private BigDecimal total;
 
     public Long getId() {
         return id;
@@ -46,5 +48,13 @@ public class Cart {
 
     public void setRef(String ref) {
         this.ref = ref;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
 }

@@ -1,5 +1,6 @@
 package com.backend.ws.dto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CartDto {
@@ -8,6 +9,7 @@ public class CartDto {
     private List<BookDto> books;
     private int quantity;
     private String ref;
+    private BigDecimal total;
 
     public Long getId() {
         return id;
@@ -39,5 +41,13 @@ public class CartDto {
 
     public void setRef(String ref) {
         this.ref = ref;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
 }

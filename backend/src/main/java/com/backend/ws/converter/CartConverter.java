@@ -25,6 +25,7 @@ public class CartConverter {
         dto.setId(cart.getId());
         dto.setRef(cart.getRef());
         dto.setQuantity(cart.getQuantity());
+        dto.setTotal(cart.getTotal());
 
         if (cart.getBooks() != null) {
             dto.setBooks(cart.getBooks().stream()
@@ -44,6 +45,7 @@ public class CartConverter {
         cart.setId(dto.getId());
         cart.setRef(dto.getRef());
         cart.setQuantity(dto.getQuantity());
+        cart.setTotal(dto.getTotal());
 
         if (dto.getBooks() != null) {
             cart.setBooks(dto.getBooks().stream()

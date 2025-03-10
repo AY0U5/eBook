@@ -4,6 +4,7 @@ import {BookDto} from "./book-dto";
 export class CartDto extends BaseDto{
   ref: string;
   quantity: number;
+  total: number;
   books: Array<BookDto>
 
   constructor() {

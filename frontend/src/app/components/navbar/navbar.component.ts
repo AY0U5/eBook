@@ -25,7 +25,12 @@ export class NavbarComponent {
   }
 
   openCart() {
-    this.cartService.cartVisible = true;
+    this.cartVisible = !this.cartVisible;
+    if (this.cartVisible) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
   }
 
   get cartVisible(): boolean {

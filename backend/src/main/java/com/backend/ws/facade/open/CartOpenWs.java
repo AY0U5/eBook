@@ -1,5 +1,6 @@
 package com.backend.ws.facade.open;
 
+import com.backend.bean.Book;
 import com.backend.bean.Cart;
 import com.backend.service.facade.open.CartOpenService;
 import com.backend.ws.converter.BookConverter;
@@ -31,14 +32,18 @@ public class CartOpenWs {
         return converter.toDtoList(service.findAll());
     }*/
 
-    @PutMapping("book")
+    @PutMapping("book/add")
     public CartDto addToCart(@RequestBody BookDto book) {
-        Cart cart = service.addToCart(bookConverter.toEntity(book));
-        return converter.toDto(cart);
+        return converter.toDto(service.addToCart(bookConverter.toEntity(book)));
     }
 
     @GetMapping("")
     public CartDto findLastCart() {
         return converter.toDto(service.findLastCart());
+    }
+
+    @PutMapping("book/remove")
+    public CartDto removeBook(@RequestBody BookDto book) {
+        return converter.toDto(service.removeBook(bookConverter.toEntity(book)));
     }
 }

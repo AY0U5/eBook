@@ -11,8 +11,8 @@
         <lucide-angular name="X" class="cursor-pointer text-gray-500 hover:text-gray-700" (click)="closeCart()"></lucide-angular>
       </div>
 
-      <!-- Cart Items -->
-      <div class="flex-1 overflow-y-auto mt-4 space-y-4">
+      <!-- Cart Items (Fixed Scroll Issue) -->
+      <div class="flex-1 mt-4 space-y-4 overflow-y-auto max-h-[calc(100vh-200px)]">
         <div *ngFor="let book of item.books" class="flex items-center gap-4 border-b pb-3">
           <img src="http://localhost:9000/uploads/{{book.pictureName}}" alt="{{ book.title }}" class="w-16 h-24 object-cover rounded-md" />
           <div class="flex-1">
@@ -20,15 +20,17 @@
             <p class="text-xs text-gray-500">{{ book.author }}</p>
             <p class="text-sm font-semibold mt-1">${{ book.price }}</p>
           </div>
-          <button class="text-red-500 text-sm">Remove</button>
+          <button class="text-red-500 text-sm"
+                  (click)="removeFromCart(book)"
+          >Remove</button>
         </div>
       </div>
 
-      <!-- Cart Footer -->
-      <div class="border-t pt-4 mt-4">
+      <!-- Cart Footer (Fixed Position) -->
+      <div class="border-t pt-4 bg-white w-full p-4 sticky bottom-0">
         <div class="flex justify-between text-lg font-semibold">
           <span>Total:</span>
-          <span>*</span>
+          <span>{{item.total}}</span>
         </div>
         <button class="w-full bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700">
           Checkout

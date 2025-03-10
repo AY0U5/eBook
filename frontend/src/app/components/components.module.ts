@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { CardComponent } from './card/card.component';
 import { FooterComponent } from './footer/footer.component';
 import { BookCardComponent } from './book-card/book-card.component';
+import {RouterLink} from "@angular/router";
 
 
 
@@ -36,11 +37,32 @@ import { BookCardComponent } from './book-card/book-card.component';
     FooterComponent,
     BookCardComponent
   ],
-  imports: [
-    CommonModule,
-    LucideAngularModule.pick({ ChevronsUpDown,Search,LayoutDashboard,BookOpen,CloudDownload,BookCopy,
-      LibraryBig,Package,Signature,LogOut,Calendar,Layers2,LayoutGrid,Heart,User,ShoppingCart,X,LayoutTemplate,
-      Facebook,Twitter,Instagram})
-  ]
+    imports: [
+        CommonModule,
+        LucideAngularModule.pick({
+            ChevronsUpDown,
+            Search,
+            LayoutDashboard,
+            BookOpen,
+            CloudDownload,
+            BookCopy,
+            LibraryBig,
+            Package,
+            Signature,
+            LogOut,
+            Calendar,
+            Layers2,
+            LayoutGrid,
+            Heart,
+            User,
+            ShoppingCart,
+            X,
+            LayoutTemplate,
+            Facebook,
+            Twitter,
+            Instagram
+        }),
+        RouterLink
+    ]
 })
 export class ComponentsModule { }

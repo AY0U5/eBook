@@ -15,4 +15,6 @@ public interface CartOpenService {
     Cart addToCart(Book book);
 
     Cart findLastCart();
+
+    Cart removeBook(Book book);
 }

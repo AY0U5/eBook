@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from "../../shared/service/open/cart.service";
 import {CartDto} from "../../shared/models/cart-dto";
 import {ToastService} from "../../shared/service/toast.service";
+import {BookDto} from "../../shared/models/book-dto";
 
 @Component({
   selector: 'app-cart',
@@ -41,7 +42,23 @@ export class CartComponent implements OnInit{
   }
 
   closeCart() {
-    this.cartService.cartVisible = false;
+    this.cartVisible = !this.cartVisible;
+    if (this.cartVisible) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }
+
+  removeFromCart(book: BookDto){
+    this.cartService.removeFromCart(book).subscribe({
+      next:(data)=>{
+        this.item = data
+      },
+      error:(err)=>{
+        this.toast.show("Error!!")
+      }
+    })
   }
 
   get item(): CartDto {
