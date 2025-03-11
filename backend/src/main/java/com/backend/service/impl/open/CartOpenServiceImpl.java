@@ -57,7 +57,7 @@ public class CartOpenServiceImpl implements CartOpenService {
         String ref = "cart-"+(dao.count() - 1);
         Cart cart = dao.findByRef(ref);
         if (cart != null){
-            boolean removed = cart.getBooks().removeIf(b->b.equals(book));
+            boolean removed = cart.getBooks().removeIf(b-> b.getId()==book.getId());
             if (removed) {
                 cart.setQuantity(cart.getBooks().size());
                 cart.setTotal(cart.getTotal().subtract(book.getPrice()));
