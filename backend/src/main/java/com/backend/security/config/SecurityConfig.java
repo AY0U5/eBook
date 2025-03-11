@@ -33,10 +33,12 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(
-                                "/auth/**",
-                                "/open/**",
-                                "/admin/**"
+                                        "/auth/**",
+                                        "/open/**"
                         ).permitAll()
+                        .requestMatchers(
+                                "/admin/**"
+                        ).hasAnyAuthority("ROLE_ADMIN")
                         .anyRequest()
                         .authenticated()
                 )

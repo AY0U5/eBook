@@ -7,8 +7,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {OpenModule} from "./pages/view/open/open.module";
 import {AdminModule} from "./pages/view/admin/admin.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {AuthInterceptor} from "./shared/interceptor/interceptor.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HttpClientModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
