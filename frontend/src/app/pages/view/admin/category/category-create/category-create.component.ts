@@ -28,13 +28,13 @@ export class CategoryCreateComponent implements OnInit{
         this.items.push(value);
         this.item = new BookCategoryDto();
         this.visible = false;
-        this.toast.show('Category created successfully');
+        this.toast.showTopRight('Category created successfully');
       },
       error: (err) => {
         console.error(err);
         this.item = new BookCategoryDto();
         this.visible = false;
-        this.toast.show('Error creating category');
+        this.toast.showTopRight('Error creating category');
       }
     })
   }

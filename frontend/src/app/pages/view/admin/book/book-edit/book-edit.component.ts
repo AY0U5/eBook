@@ -39,7 +39,7 @@ export class BookEditComponent implements OnInit{
         this.categories = value;
       },
       error: (error) => {
-        this.toast.show('Error fetching categories');
+        this.toast.showTopRight('Error fetching categories');
       }
     })
   }
@@ -49,12 +49,12 @@ export class BookEditComponent implements OnInit{
       next: (value) => {
         this.editVisible = false;
         this.item = new BookDto();
-        this.toast.show('Book updated successfully');
+        this.toast.showTopRight('Book updated successfully');
       },
       error:(error) => {
         this.editVisible = false;
         this.item = new BookDto();
-        this.toast.show('Error updating book');
+        this.toast.showTopRight('Error updating book');
       }
     })
   }

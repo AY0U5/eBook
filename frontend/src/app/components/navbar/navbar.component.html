@@ -12,11 +12,27 @@
       </div>
     </div>
     <div>
-        <h5 class="cursor-pointer" routerLink="/">E-BOOK</h5>
+      <h5 class="cursor-pointer" routerLink="/">E-BOOK</h5>
     </div>
-    <div class="flex gap-4">
-      <lucide-angular name="Heart" class="cursor-pointer"></lucide-angular>
-      <lucide-angular name="ShoppingCart" class="cursor-pointer" (click)="openCart()"></lucide-angular>
+    <div class="flex gap-4 relative">
+      <!-- Favorite Icon with Badge -->
+      <div class="relative">
+        <lucide-angular name="Heart" class="cursor-pointer"></lucide-angular>
+        <!--<span *ngIf="favoriteCount > 0"
+              class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full -translate-y-1/2 translate-x-1/2">
+          {{ favoriteCount }}
+        </span>-->
+      </div>
+
+      <!-- Shopping Cart Icon with Badge -->
+      <div class="relative">
+        <lucide-angular name="ShoppingCart" class="cursor-pointer" (click)="openCart()"></lucide-angular>
+        <span *ngIf="item.books.length > 0"
+              class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full -translate-y-1/2 translate-x-1/2">
+          {{ item.books.length }}
+        </span>
+      </div>
+
       <lucide-angular name="User" class="cursor-pointer"></lucide-angular>
     </div>
   </nav>

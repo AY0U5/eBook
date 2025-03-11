@@ -22,12 +22,12 @@ export class CategoryEditComponent {
         this.editVisible = false;
         this.items.push(value)
         this.item = new BookCategoryDto();
-        this.toast.show("Category updated successfully")
+        this.toast.showTopRight("Category updated successfully")
       },
       error: (err) => {
         this.editVisible = false;
         this.item = new BookCategoryDto();
-        this.toast.show("Error updating category")
+        this.toast.showTopRight("Error updating category")
       }
     })
   }

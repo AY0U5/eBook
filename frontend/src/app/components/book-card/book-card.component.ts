@@ -29,10 +29,11 @@ export class BookCardComponent {
   addToCart(item : BookDto){
     this.cartService.addToCart(item).subscribe({
       next:(data)=> {
+        this.toast.showTopCenter(item.title+" added to cart")
         this.item = data
       },
       error:()=>{
-        this.toast.show("Error in adding book to cart")
+        this.toast.showTopRight("Error in adding book to cart")
       }
     })
   }

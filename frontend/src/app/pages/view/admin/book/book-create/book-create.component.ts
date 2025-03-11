@@ -39,12 +39,12 @@ export class BookCreateComponent implements OnInit{
         this.items.push(value);
         this.visible = false;
         this.item = new BookDto();
-        this.toast.show('Book created successfully');
+        this.toast.showTopRight('Book created successfully');
       },
       error:(error) => {
         this.visible = false;
         this.item = new BookDto();
-        this.toast.show('Error creating book');
+        this.toast.showTopRight('Error creating book');
       }
     })
   }
@@ -55,7 +55,7 @@ export class BookCreateComponent implements OnInit{
         this.categories = value;
       },
       error: (error) => {
-        this.toast.show('Error fetching categories');
+        this.toast.showTopRight('Error fetching categories');
       }
     })
   }

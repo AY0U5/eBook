@@ -28,7 +28,7 @@ export class CartComponent implements OnInit{
         this.item = data
       },
       error:(err)=>{
-        this.toast.show("Error , Sorry try later!")
+        this.toast.showTopRight("Error , Sorry try later!")
       }
     })
   }
@@ -56,7 +56,7 @@ export class CartComponent implements OnInit{
         this.item = data
       },
       error:(err)=>{
-        this.toast.show("Error!!")
+        this.toast.showTopRight("Error!!")
       }
     })
   }

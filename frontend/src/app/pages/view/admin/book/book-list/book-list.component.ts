@@ -35,7 +35,7 @@ export class BookListComponent implements OnInit{
     this.bookService.deleteByRef(ref).subscribe({
       next: () => {
         this.items = this.items.filter(item => item.ref !== ref);
-        this.toast.show("Book deleted successfully");
+        this.toast.showTopRight("Book deleted successfully");
       }
     });
   }
@@ -56,7 +56,7 @@ export class BookListComponent implements OnInit{
         this.items = data;
       },
       error: (err) => {
-        this.toast.show("Book not found")
+        this.toast.showTopRight("Book not found")
       }
     });
   }

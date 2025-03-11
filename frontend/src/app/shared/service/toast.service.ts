@@ -7,10 +7,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ToastService {
   constructor(private snackBar: MatSnackBar) {}
 
-  show(message: string, action = 'Close', duration = 3000) {
+  showTopRight(message: string, action = 'Close', duration = 3000) {
     this.snackBar.open(message, action, {
       duration,
       horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
+  }
+
+  showTopCenter(message: string, action = 'Close', duration = 3000) {
+    this.snackBar.open(message, action, {
+      duration,
+      horizontalPosition: 'center',
       verticalPosition: 'top',
     });
   }

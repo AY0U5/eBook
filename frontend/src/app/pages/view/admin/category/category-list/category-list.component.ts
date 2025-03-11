@@ -52,7 +52,7 @@ export class CategoryListComponent implements OnInit{
         this.items = category;
       },
       error: (err) => {
-        this.toast.show("Category not found")
+        this.toast.showTopRight("Category not found")
       }
     })
   }
@@ -61,10 +61,10 @@ export class CategoryListComponent implements OnInit{
     this.categoryService.deleteByRef(ref).subscribe({
       next: (value) => {
         this.items = this.items.filter(item => item.ref !== ref);
-        this.toast.show("Category deleted successfully")
+        this.toast.showTopRight("Category deleted successfully")
       },
       error: (err) => {
-        this.toast.show("Error deleting category")
+        this.toast.showTopRight("Error deleting category")
       }
     })
   }
