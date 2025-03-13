@@ -10,6 +10,7 @@ import {AdminModule} from "./pages/view/admin/admin.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {AuthInterceptor} from "./shared/interceptor/interceptor.interceptor";
+import {ComponentsModule} from "./components/components.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AuthInterceptor} from "./shared/interceptor/interceptor.interceptor";
     AppRoutingModule,
     OpenModule,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ],
   providers: [
     provideAnimationsAsync(),
