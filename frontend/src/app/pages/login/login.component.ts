@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AuthService} from "../../shared/service/auth/auth.service";
 import {UserDto} from "../../shared/models/user-dto";
 import {ToastService} from "../../shared/service/toast.service";
+import {AuthDto} from "../../shared/models/auth-dto";
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,6 @@ import {ToastService} from "../../shared/service/toast.service";
 })
 export class LoginComponent {
 
-  authRequest:{email:string,password:string}
-
   constructor(
     private service: AuthService,
     private toast: ToastService
@@ -19,7 +18,7 @@ export class LoginComponent {
   }
 
   login(){
-    this.service.login(this.authRequest).subscribe({
+    this.service.login().subscribe({
       next:(data)=>{
         this.toast.showTopRight("Sign in successfully")
         localStorage.setItem("token",data.token)
@@ -30,19 +29,11 @@ export class LoginComponent {
     })
   }
 
-  get item(): UserDto {
-    return this.service.item;
+  get request(): AuthDto {
+    return this.service.request;
   }
 
-  set item(value: UserDto) {
-    this.service.item = value;
-  }
-
-  get items(): Array<UserDto> {
-    return this.service.items;
-  }
-
-  set items(value: Array<UserDto>) {
-    this.service.items = value;
+  set request(value: AuthDto) {
+    this.service.request = value;
   }
 }

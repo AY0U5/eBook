@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../../../environment/environment";
 import {UserDto} from "../../models/user-dto";
 import {TokenDto} from "../../models/token-dto";
+import {AuthDto} from "../../models/auth-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthService {
 
   private _item: UserDto = new UserDto();
   private _items: Array<UserDto> = new Array<UserDto>();
+  private _request : AuthDto = new AuthDto();
 
   constructor(private http: HttpClient) {
   }
@@ -20,8 +22,8 @@ export class AuthService {
     return this.http.post<UserDto>(this.API + "register", this.item)
   }
 
-  public login(authRequest:{email:string,password:string}): Observable<TokenDto> {
-    return this.http.post<TokenDto>(this.API + "authenticate", authRequest)
+  public login(): Observable<TokenDto> {
+    return this.http.post<TokenDto>(this.API + "authenticate", this.request)
   }
 
   get API() {
@@ -49,5 +51,17 @@ export class AuthService {
 
   set items(value: Array<UserDto>) {
     this._items = value;
+  }
+
+
+  get request(): AuthDto {
+    if (this._request == null) {
+      this._request = new AuthDto();
+    }
+    return this._request;
+  }
+
+  set request(value: AuthDto) {
+    this._request = value;
   }
 }
