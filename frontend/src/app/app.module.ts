@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {AuthInterceptor} from "./shared/interceptor/interceptor.interceptor";
 import {ComponentsModule} from "./components/components.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ComponentsModule} from "./components/components.module";
     OpenModule,
     AdminModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync(),
