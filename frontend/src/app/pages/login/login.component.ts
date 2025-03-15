@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../../shared/service/auth/auth.service";
-import {UserDto} from "../../shared/models/user-dto";
 import {ToastService} from "../../shared/service/toast.service";
 import {AuthDto} from "../../shared/models/auth-dto";
 
